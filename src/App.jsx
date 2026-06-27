@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import Sidebar from './components/Sidebar';
+import Login from './pages/Login';
 import Explorar from './pages/Explorar';
 import Pendientes from './pages/Pendientes';
 import Viendo from './pages/Viendo';
@@ -14,6 +16,9 @@ import Statistics from './pages/Statistics';
 
 function AppContent() {
   const { bgImage } = useTheme();
+  const { authed }  = useAuth();
+
+  if (!authed) return <Login />;
 
   return (
     <BrowserRouter>
@@ -48,9 +53,11 @@ function AppContent() {
 
 function App() {
   return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 

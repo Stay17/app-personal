@@ -2,12 +2,14 @@ import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   Compass, PlayCircle, CheckSquare, PauseCircle, Clock,
-  ListTodo, Trophy, BarChart2, Skull, Sun, Moon, ImageIcon, X,
+  ListTodo, Trophy, BarChart2, Skull, Sun, Moon, ImageIcon, X, LogOut,
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 
 const Sidebar = () => {
   const { theme, toggleTheme, bgImage, handleBgImageUpload, clearBgImage } = useTheme();
+  const { logout } = useAuth();
   const fileInputRef = useRef(null);
 
   const menuItems = [
@@ -63,6 +65,11 @@ const Sidebar = () => {
             Quitar fondo
           </button>
         )}
+
+        <button className="sidebar-btn danger" onClick={logout} style={{ marginTop: '4px' }}>
+          <LogOut size={16} />
+          Cerrar sesión
+        </button>
       </div>
     </aside>
   );
