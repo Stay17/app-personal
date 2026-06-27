@@ -1,0 +1,518 @@
+/* Importando la fuente Lato en varios grosores (ligera, normal, negrita) */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+  /* TEMA OSCURO Y CELESTE (Estilo Cyberpunk/Sci-Fi) */
+  --bg-primary: #000000;
+  --bg-card: rgba(26, 26, 26, 0.7); /* Glassmorphism base */
+  --border-color: #2a2a2a;
+  
+  --text-main: #E0E0E0; /* Blanco suave, menos agresivo */
+  --text-muted: #9E9E9E; /* Gris plata para información secundaria */
+  
+  /* Nuevos colores Celeste Neón */
+  --accent-color: #38BDF8;
+  --accent-hover: #7dd3fc;
+  --accent-glow: rgba(56, 189, 248, 0.5);
+
+  /* Color Dorado exclusivo para puntuaciones */
+  --star-gold: #F4D03F;
+
+  /* TIPOGRAFÍA LATO */
+  --font-main: 'Lato', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-primary);
+  /* Fondo con degradado radial oscuro que pediste */
+  background-image: radial-gradient(circle at center, #2c2c30 0%, #000000 100%);
+  background-attachment: fixed; /* Mantiene el fondo estático al hacer scroll */
+  color: var(--text-main);
+  font-family: var(--font-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Títulos principales con Lato en negrita (700) y color celeste */
+h1, h2, h4 {
+  color: var(--accent-color);
+  font-family: var(--font-main);
+  font-weight: 700; 
+  letter-spacing: 1px;
+}
+
+/* --- CLASES DE DISEÑO (LAYOUT) --- */
+
+/* --- ESTRUCTURA PRINCIPAL (LAYOUT) --- */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* MENÚ LATERAL (SIDEBAR) */
+.sidebar {
+  width: 260px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid var(--border-color);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  z-index: 50;
+}
+
+.sidebar h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+/* Botones del menú */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 5px;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  transform: translateX(5px);
+}
+
+/* Efecto cuando estás en esa sección */
+.nav-link.active {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent-color);
+  border-right: 3px solid var(--accent-color);
+}
+
+/* ÁREA DE CONTENIDO (DERECHA) */
+.main-content {
+  flex: 1;
+  margin-left: 260px; /* Deja espacio para el menú fijo */
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Barra de desplazamiento elegante */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* --- BUSCADOR Y PANTALLA EXPLORAR --- */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 24px 16px 50px;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+  background: rgba(26, 26, 26, 0.8);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.search-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+/* --- BARRA DE FILTROS (DISEÑO HORIZONTAL Y MEJORADO) --- */
+.filters-bar {
+  display: flex;
+  flex-wrap: wrap; /* Permite que se acomoden solos si la pantalla es pequeña */
+  gap: 15px;
+  margin-bottom: 40px;
+  width: 100%;
+  background: var(--bg-card); /* Fondo semitransparente oscuro */
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1; /* Hace que todos los filtros tengan el mismo ancho */
+  min-width: 150px; /* Evita que se aplasten en pantallas pequeñas */
+}
+
+.filter-group label {
+  color: var(--accent-color);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 5px;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding: 14px 40px 14px 16px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  
+  /* Oculta la flecha por defecto del navegador para usar la tuya */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: all 0.3s ease;
+}
+
+.select-wrapper select:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.select-wrapper select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.select-wrapper select option {
+  background: #111111;
+  color: var(--text-main);
+  padding: 10px;
+}
+
+/* Tu ícono de ChevronDown personalizado */
+.select-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-color);
+  pointer-events: none; /* Deja que el clic lo atraviese para abrir el select */
+  transition: transform 0.3s ease;
+}
+
+/* Animación: la flecha gira cuando abres el menú */
+.select-wrapper select:focus + .select-icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* --- GRID Y TARJETAS DE ANIME --- */
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+  padding-bottom: 40px;
+}
+
+.anime-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.anime-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  border-color: var(--accent-color);
+}
+
+/* Portada completa y sin recortes */
+.anime-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3; /* Proporción exacta de los pósters oficiales */
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 1px solid var(--border-color);
+  background-color: #111;
+}
+
+.anime-info {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* TITULO DE LOS ANIMES EN BLANCO */
+.anime-title {
+  color: #ffffff !important; /* Forzamos a que sea blanco puro */
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.anime-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* --- ESTRELLAS DORADAS --- */
+.anime-meta > div:first-child,
+.anime-meta > span:first-child,
+.anime-meta .lucide-star {
+  color: var(--star-gold) !important;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.anime-meta .lucide-star {
+  stroke: var(--star-gold) !important; 
+  fill: var(--star-gold); 
+}
+
+/* --- SKELETON LOADING --- */
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite linear;
+  border-radius: 16px;
+  height: 400px;
+  border: 1px solid var(--border-color);
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* --- MENSAJE DE ERROR --- */
+.error-message {
+  background: rgba(255, 50, 50, 0.1);
+  border: 1px solid rgba(255, 50, 50, 0.3);
+  color: #ff6b6b;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* --- MODAL (PANEL DE DETALLES PREMIUM) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75); /* Oscurece más el fondo trasero */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque premium */
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #131316; /* Gris oscuro profundo para una interfaz moderna */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Borde micro-fino elegante */
+  border-radius: 24px; /* Esquinas más curvas y pulidas */
+  width: 100%;
+  max-width: 850px;
+  max-height: 90vh;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 0, 0, 0.3); /* Sombra suave flotante */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Crucial: obliga a la imagen a respetar las curvas del contenedor */
+}
+
+@media (min-width: 768px) {
+  .modal-content {
+    flex-direction: row;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.06); /* Botón circular integrado translúcido */
+  border: none;
+  color: var(--text-muted);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .modal-image {
+    width: 360px;
+    height: 100%;
+    max-height: none;
+  }
+}
+
+.modal-info {
+  padding: 40px; /* Más espacio interno para que respire el contenido */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.modal-info h2 {
+  font-size: 2rem;
+  color: #ffffff; /* Título en blanco impecable */
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+/* Contenedor inteligente con scroll moderno para la Sinopsis */
+.modal-synopsis {
+  color: #bcbcbc;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 12px;
+}
+
+/* Scrollbar ultra delgado para la sinopsis */
+.modal-synopsis::-webkit-scrollbar {
+  width: 5px;
+}
+.modal-synopsis::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-synopsis::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.modal-synopsis::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+.btn-add {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent-color);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-add:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
+}
