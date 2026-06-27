@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
-import { Trash2, Layers, Loader2, Search, Play } from 'lucide-react';
+import { Trash2, Layers, Loader2, Search, Play, Folder } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 const Pendientes = () => {
@@ -67,7 +67,7 @@ const Pendientes = () => {
 
         Swal.fire({
           title: '¡Añadido a Viendo!',
-          text: 'Prepara las palomitas 🍿',
+          text: 'Prepara las palomitas',
           icon: 'success',
           background: '#1a1a1a',
           color: '#ffffff',
@@ -184,7 +184,7 @@ const Pendientes = () => {
         }
       `}</style>
 
-      <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800 }}>Mis Animes Pendientes 📁</h2>
+      <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '8px' }}><Folder size={22} />Mis Animes Pendientes</h2>
 
       {!loading && animesPendientes.length > 0 && (
         <div className="search-bar-container">

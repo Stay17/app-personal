@@ -105,7 +105,7 @@ const Viendo = () => {
   // ── NUEVA FUNCIÓN: Mover al cementerio ──────────────────────────────────────
   const handleDropear = async (anime) => {
     const { value: comentario } = await Swal.fire({
-      title: 'Mandar al cementerio 💀',
+      title: 'Mandar al cementerio',
       html: `
         <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 15px;">
           Te quedaste en el <b style="color:#D4AF37;">capítulo ${anime.episodio_actual}</b>.
@@ -246,7 +246,7 @@ const Viendo = () => {
         }
       `}</style>
 
-      <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800 }}>Viendo Actualmente 📺</h2>
+      <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '8px' }}><Tv size={22} />Viendo Actualmente</h2>
       {!loading && animesViendo.length > 0 && (
         <div className="search-bar-container">
           <Search size={18} className="search-bar-icon" />

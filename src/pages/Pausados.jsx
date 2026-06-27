@@ -339,7 +339,7 @@ const Pausados = () => {
         }
       `}</style>
 
-      <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800 }}>Animes Pausados ⏸️</h2> 
+      <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '8px' }}><PauseCircle size={22} />Animes Pausados</h2>
 
       {!loading && animesPausados.length > 0 && (
         <div className="search-bar-container">

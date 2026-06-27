@@ -537,7 +537,10 @@ const DroppedAnimes = () => {
         .dg-no-results span { color: #3a3a3a; font-size: 0.82rem; }
       `}</style>
 
-      <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800 }}>CEMENTERIO DE ANIMES 💀</h2>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
+        <h2 className="title" style={{ color: '#3ea6ff', fontWeight: 800, margin: 0 }}>CEMENTERIO DE ANIMES</h2>
+        <Skull size={22} color="#3ea6ff" />
+      </div>
 
       {/* Buscador */}
       {!loading && droppedList.length > 0 && (

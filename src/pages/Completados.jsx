@@ -188,7 +188,7 @@ const Completados = () => {
         }
       `}</style>
 
-      <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800 }}>Animes Completados ✅</h2>
+      <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '8px' }}><CheckCircle2 size={22} />Animes Completados</h2>
 
       {!loading && animesCompletados.length > 0 && (
         <div className="search-bar-container">

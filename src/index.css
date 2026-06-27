@@ -1,27 +1,98 @@
-/* Importando la fuente Lato en varios grosores (ligera, normal, negrita) */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
+/* ══════════════════════════════════════════════════════
+   TEMA OSCURO (default)
+══════════════════════════════════════════════════════ */
 :root {
-  /* TEMA OSCURO Y CELESTE (Estilo Cyberpunk/Sci-Fi) */
-  --bg-primary: #000000;
-  --bg-card: rgba(26, 26, 26, 0.7); /* Glassmorphism base */
-  --border-color: #2a2a2a;
-  
-  --text-main: #E0E0E0; /* Blanco suave, menos agresivo */
-  --text-muted: #9E9E9E; /* Gris plata para información secundaria */
-  
-  /* Nuevos colores Celeste Neón */
+  /* ── Fondos ── */
+  --bg-primary:      #0a0a0a;
+  --bg-secondary:    #111111;
+  --bg-card:         rgba(26, 26, 26, 0.85);
+  --bg-card-solid:   #1a1a1a;
+  --bg-input:        rgba(0, 0, 0, 0.6);
+  --bg-input-hover:  rgba(0, 0, 0, 0.8);
+  --bg-modal:        #131316;
+  --bg-radial-inner: #2c2c30;
+  --bg-nav-hover:    rgba(255, 255, 255, 0.05);
+  --bg-modal-overlay: rgba(0, 0, 0, 0.75);
+
+  /* ── Bordes ── */
+  --border-color:  #2a2a2a;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+
+  /* ── Texto ── */
+  --text-main:       #E0E0E0;
+  --text-muted:      #9E9E9E;
+  --text-heading:    #ffffff;
+  --text-synopsis:   #bcbcbc;
+  --text-on-accent:  #000000;
+
+  /* ── Acento (celeste) ── */
   --accent-color: #38BDF8;
   --accent-hover: #7dd3fc;
-  --accent-glow: rgba(56, 189, 248, 0.5);
+  --accent-glow:  rgba(56, 189, 248, 0.5);
 
-  /* Color Dorado exclusivo para puntuaciones */
-  --star-gold: #F4D03F;
+  /* ── Semánticos ── */
+  --star-gold:    #F4D03F;
+  --danger:       #EF4444;
+  --danger-glow:  rgba(239, 68, 68, 0.2);
+  --success:      #10B981;
 
-  /* TIPOGRAFÍA LATO */
+  /* ── Skeleton ── */
+  --skeleton-from: #1a1a1a;
+  --skeleton-to:   #2a2a2a;
+
+  /* ── Scrollbar ── */
+  --scrollbar-track: #0a0a0a;
+  --scrollbar-thumb: #2a2a2a;
+
+  /* ── Tipografía ── */
   --font-main: 'Lato', sans-serif;
 }
 
+/* ══════════════════════════════════════════════════════
+   TEMA CLARO
+══════════════════════════════════════════════════════ */
+[data-theme="light"] {
+  --bg-primary:      #eef2f7;
+  --bg-secondary:    #f8fafc;
+  --bg-card:         rgba(255, 255, 255, 0.88);
+  --bg-card-solid:   #ffffff;
+  --bg-input:        rgba(255, 255, 255, 0.9);
+  --bg-input-hover:  rgba(248, 250, 252, 0.95);
+  --bg-modal:        #ffffff;
+  --bg-radial-inner: #dde9f5;
+  --bg-nav-hover:    rgba(0, 0, 0, 0.05);
+  --bg-modal-overlay: rgba(0, 0, 0, 0.55);
+
+  --border-color:  #cbd5e1;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+
+  --text-main:      #1e293b;
+  --text-muted:     #64748b;
+  --text-heading:   #0f172a;
+  --text-synopsis:  #475569;
+  --text-on-accent: #ffffff;
+
+  --accent-color: #0284c7;
+  --accent-hover: #0369a1;
+  --accent-glow:  rgba(2, 132, 199, 0.35);
+
+  --star-gold:   #d97706;
+  --danger:      #dc2626;
+  --danger-glow: rgba(220, 38, 38, 0.15);
+  --success:     #059669;
+
+  --skeleton-from: #e2e8f0;
+  --skeleton-to:   #cbd5e1;
+
+  --scrollbar-track: #e2e8f0;
+  --scrollbar-thumb: #94a3b8;
+}
+
+/* ══════════════════════════════════════════════════════
+   BASE
+══════════════════════════════════════════════════════ */
 * {
   margin: 0;
   padding: 0;
@@ -29,33 +100,40 @@
 }
 
 body {
-  background: var(--bg-primary);
-  /* Fondo con degradado radial oscuro que pediste */
-  background-image: radial-gradient(circle at center, #2c2c30 0%, #000000 100%);
-  background-attachment: fixed; /* Mantiene el fondo estático al hacer scroll */
+  background-color: var(--bg-primary);
+  background-image: radial-gradient(circle at center, var(--bg-radial-inner) 0%, var(--bg-primary) 100%);
+  background-attachment: fixed;
   color: var(--text-main);
   font-family: var(--font-main);
   min-height: 100vh;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Títulos principales con Lato en negrita (700) y color celeste */
 h1, h2, h4 {
   color: var(--accent-color);
   font-family: var(--font-main);
-  font-weight: 700; 
+  font-weight: 700;
   letter-spacing: 1px;
 }
 
-/* --- CLASES DE DISEÑO (LAYOUT) --- */
+/* ══════════════════════════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════════════════════════ */
+::-webkit-scrollbar       { width: 8px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
 
-/* --- ESTRUCTURA PRINCIPAL (LAYOUT) --- */
+/* ══════════════════════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════════════════════ */
 .app-layout {
   display: flex;
   min-height: 100vh;
 }
 
-/* MENÚ LATERAL (SIDEBAR) */
+/* ── Sidebar ── */
 .sidebar {
   width: 260px;
   background: var(--bg-card);
@@ -68,6 +146,7 @@ h1, h2, h4 {
   position: fixed;
   height: 100vh;
   z-index: 50;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .sidebar h1 {
@@ -77,7 +156,7 @@ h1, h2, h4 {
   text-transform: uppercase;
 }
 
-/* Botones del menú */
+/* ── Nav links ── */
 .nav-link {
   display: flex;
   align-items: center;
@@ -92,22 +171,25 @@ h1, h2, h4 {
 }
 
 .nav-link:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-nav-hover);
   color: var(--text-main);
   transform: translateX(5px);
 }
 
-/* Efecto cuando estás en esa sección */
 .nav-link.active {
   background: rgba(56, 189, 248, 0.1);
   color: var(--accent-color);
   border-right: 3px solid var(--accent-color);
 }
 
-/* ÁREA DE CONTENIDO (DERECHA) */
+[data-theme="light"] .nav-link.active {
+  background: rgba(2, 132, 199, 0.1);
+}
+
+/* ── Main content ── */
 .main-content {
   flex: 1;
-  margin-left: 260px; /* Deja espacio para el menú fijo */
+  margin-left: 260px;
   padding: 40px;
   min-height: 100vh;
 }
@@ -124,22 +206,48 @@ h1, h2, h4 {
   line-height: 1.5;
 }
 
-/* Barra de desplazamiento elegante */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-color);
+/* ── Sidebar settings section ── */
+.sidebar-settings {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-/* --- BUSCADOR Y PANTALLA EXPLORAR --- */
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.sidebar-btn:hover {
+  background: var(--bg-nav-hover);
+  color: var(--text-main);
+  border-color: var(--accent-color);
+}
+
+.sidebar-btn.danger:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* ══════════════════════════════════════════════════════
+   BUSCADOR
+══════════════════════════════════════════════════════ */
 .search-container {
   position: relative;
   width: 100%;
@@ -152,7 +260,7 @@ h1, h2, h4 {
   padding: 16px 24px 16px 50px;
   border-radius: 50px;
   border: 1px solid var(--border-color);
-  background: rgba(26, 26, 26, 0.8);
+  background: var(--bg-input);
   color: var(--text-main);
   font-family: var(--font-main);
   font-size: 1.1rem;
@@ -174,26 +282,29 @@ h1, h2, h4 {
   color: var(--text-muted);
 }
 
-/* --- BARRA DE FILTROS (DISEÑO HORIZONTAL Y MEJORADO) --- */
+/* ══════════════════════════════════════════════════════
+   FILTROS
+══════════════════════════════════════════════════════ */
 .filters-bar {
   display: flex;
-  flex-wrap: wrap; /* Permite que se acomoden solos si la pantalla es pequeña */
+  flex-wrap: wrap;
   gap: 15px;
   margin-bottom: 40px;
   width: 100%;
-  background: var(--bg-card); /* Fondo semitransparente oscuro */
+  background: var(--bg-card);
   padding: 20px;
   border-radius: 16px;
   border: 1px solid var(--border-color);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
 }
 
 .filter-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  flex: 1; /* Hace que todos los filtros tengan el mismo ancho */
-  min-width: 150px; /* Evita que se aplasten en pantallas pequeñas */
+  flex: 1;
+  min-width: 150px;
 }
 
 .filter-group label {
@@ -213,8 +324,8 @@ h1, h2, h4 {
 .select-wrapper select {
   width: 100%;
   padding: 14px 40px 14px 16px;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
   border-radius: 10px;
   color: var(--text-main);
   font-family: var(--font-main);
@@ -222,8 +333,6 @@ h1, h2, h4 {
   font-weight: 600;
   outline: none;
   cursor: pointer;
-  
-  /* Oculta la flecha por defecto del navegador para usar la tuya */
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -232,7 +341,7 @@ h1, h2, h4 {
 
 .select-wrapper select:hover {
   border-color: rgba(56, 189, 248, 0.4);
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--bg-input-hover);
 }
 
 .select-wrapper select:focus {
@@ -241,28 +350,28 @@ h1, h2, h4 {
 }
 
 .select-wrapper select option {
-  background: #111111;
+  background: var(--bg-card-solid);
   color: var(--text-main);
   padding: 10px;
 }
 
-/* Tu ícono de ChevronDown personalizado */
 .select-icon {
   position: absolute;
   right: 14px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--accent-color);
-  pointer-events: none; /* Deja que el clic lo atraviese para abrir el select */
+  pointer-events: none;
   transition: transform 0.3s ease;
 }
 
-/* Animación: la flecha gira cuando abres el menú */
 .select-wrapper select:focus + .select-icon {
   transform: translateY(-50%) rotate(180deg);
 }
 
-/* --- GRID Y TARJETAS DE ANIME --- */
+/* ══════════════════════════════════════════════════════
+   GRID Y TARJETAS
+══════════════════════════════════════════════════════ */
 .anime-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -280,6 +389,7 @@ h1, h2, h4 {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  backdrop-filter: blur(8px);
 }
 
 .anime-card:hover {
@@ -288,15 +398,14 @@ h1, h2, h4 {
   border-color: var(--accent-color);
 }
 
-/* Portada completa y sin recortes */
 .anime-card img {
   width: 100%;
   height: auto;
-  aspect-ratio: 2 / 3; /* Proporción exacta de los pósters oficiales */
+  aspect-ratio: 2 / 3;
   object-fit: cover;
   object-position: center;
   border-bottom: 1px solid var(--border-color);
-  background-color: #111;
+  background-color: var(--bg-secondary);
 }
 
 .anime-info {
@@ -307,15 +416,14 @@ h1, h2, h4 {
   justify-content: space-between;
 }
 
-/* TITULO DE LOS ANIMES EN BLANCO */
 .anime-title {
-  color: #ffffff !important; /* Forzamos a que sea blanco puro */
+  color: var(--text-heading) !important;
   font-weight: 700;
   font-size: 1.1rem;
   margin-bottom: 8px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  line-clamp: 2; 
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -329,7 +437,6 @@ h1, h2, h4 {
   font-weight: 700;
 }
 
-/* --- ESTRELLAS DORADAS --- */
 .anime-meta > div:first-child,
 .anime-meta > span:first-child,
 .anime-meta .lucide-star {
@@ -340,26 +447,30 @@ h1, h2, h4 {
 }
 
 .anime-meta .lucide-star {
-  stroke: var(--star-gold) !important; 
-  fill: var(--star-gold); 
+  stroke: var(--star-gold) !important;
+  fill: var(--star-gold);
 }
 
-/* --- SKELETON LOADING --- */
+/* ══════════════════════════════════════════════════════
+   SKELETON LOADING
+══════════════════════════════════════════════════════ */
 .skeleton {
-  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background: linear-gradient(90deg, var(--skeleton-from) 25%, var(--skeleton-to) 50%, var(--skeleton-from) 75%);
   background-size: 200% 100%;
-  animation: loading 1.5s infinite linear;
+  animation: skeleton-loading 1.5s infinite linear;
   border-radius: 16px;
   height: 400px;
   border: 1px solid var(--border-color);
 }
 
-@keyframes loading {
-  0% { background-position: 200% 0; }
+@keyframes skeleton-loading {
+  0%   { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
 
-/* --- MENSAJE DE ERROR --- */
+/* ══════════════════════════════════════════════════════
+   ERROR
+══════════════════════════════════════════════════════ */
 .error-message {
   background: rgba(255, 50, 50, 0.1);
   border: 1px solid rgba(255, 50, 50, 0.3);
@@ -371,15 +482,17 @@ h1, h2, h4 {
   font-weight: 600;
 }
 
-/* --- MODAL (PANEL DE DETALLES PREMIUM) --- */
+/* ══════════════════════════════════════════════════════
+   MODAL
+══════════════════════════════════════════════════════ */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.75); /* Oscurece más el fondo trasero */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque premium */
+  background: var(--bg-modal-overlay);
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
@@ -389,30 +502,28 @@ h1, h2, h4 {
 }
 
 .modal-content {
-  background: #131316; /* Gris oscuro profundo para una interfaz moderna */
-  border: 1px solid rgba(255, 255, 255, 0.08); /* Borde micro-fino elegante */
-  border-radius: 24px; /* Esquinas más curvas y pulidas */
+  background: var(--bg-modal);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
   width: 100%;
   max-width: 850px;
   max-height: 90vh;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 0, 0, 0.3); /* Sombra suave flotante */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 0, 0, 0.3);
   position: relative;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Crucial: obliga a la imagen a respetar las curvas del contenedor */
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
-  .modal-content {
-    flex-direction: row;
-  }
+  .modal-content { flex-direction: row; }
 }
 
 .modal-close {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(255, 255, 255, 0.06); /* Botón circular integrado translúcido */
+  background: var(--bg-nav-hover);
   border: none;
   color: var(--text-muted);
   border-radius: 50%;
@@ -427,8 +538,8 @@ h1, h2, h4 {
 }
 
 .modal-close:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  background: var(--border-color);
+  color: var(--text-main);
   transform: scale(1.08);
 }
 
@@ -447,7 +558,7 @@ h1, h2, h4 {
 }
 
 .modal-info {
-  padding: 40px; /* Más espacio interno para que respire el contenido */
+  padding: 40px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -457,7 +568,7 @@ h1, h2, h4 {
 
 .modal-info h2 {
   font-size: 2rem;
-  color: #ffffff; /* Título en blanco impecable */
+  color: var(--text-heading);
   margin-bottom: 12px;
   line-height: 1.2;
 }
@@ -469,9 +580,8 @@ h1, h2, h4 {
   margin-bottom: 20px;
 }
 
-/* Contenedor inteligente con scroll moderno para la Sinopsis */
 .modal-synopsis {
-  color: #bcbcbc;
+  color: var(--text-synopsis);
   line-height: 1.6;
   margin-bottom: 25px;
   font-size: 0.95rem;
@@ -480,26 +590,16 @@ h1, h2, h4 {
   padding-right: 12px;
 }
 
-/* Scrollbar ultra delgado para la sinopsis */
-.modal-synopsis::-webkit-scrollbar {
-  width: 5px;
-}
-.modal-synopsis::-webkit-scrollbar-track {
-  background: transparent;
-}
-.modal-synopsis::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-.modal-synopsis::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-color);
-}
+.modal-synopsis::-webkit-scrollbar       { width: 5px; }
+.modal-synopsis::-webkit-scrollbar-track { background: transparent; }
+.modal-synopsis::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 10px; }
+.modal-synopsis::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
 
 .btn-add {
   width: 100%;
   padding: 14px;
   background: var(--accent-color);
-  color: #000;
+  color: var(--text-on-accent);
   border: none;
   border-radius: 12px;
   font-family: var(--font-main);
@@ -514,5 +614,5 @@ h1, h2, h4 {
 .btn-add:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
+  box-shadow: 0 8px 20px var(--accent-glow);
 }

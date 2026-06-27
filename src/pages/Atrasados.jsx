@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
-import { Trash2, History, Loader2, Search, MonitorPlay, Layers } from 'lucide-react';
+import { Trash2, History, Loader2, Search, MonitorPlay, Layers, Hourglass } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 const Atrasados = () => {
@@ -209,7 +209,7 @@ const Atrasados = () => {
         }
       `}</style>
 
-      <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800 }}>Temporadas Atrasadas ⏳</h2>
+      <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '8px' }}><Hourglass size={22} />Temporadas Atrasadas</h2>
 
       {!loading && animesAtrasados.length > 0 && (
         <div className="search-bar-container">
@@ -254,7 +254,7 @@ const Atrasados = () => {
 
                 <h3 className="anime-title" style={{ marginBottom: 'auto' }}>{anime.titulo}</h3>
                 
-                {/* 🟢 CONTENEDOR AJUSTADO PARA EVITAR QUE SE APLASTEN LOS ELEMENTOS */}
+                {/* CONTENEDOR AJUSTADO PARA EVITAR QUE SE APLASTEN LOS ELEMENTOS */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '15px', gap: '8px' }}>
                   
                   {/* BADGE DE CAPÍTULOS */}

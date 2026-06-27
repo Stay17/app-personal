@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabase';
-import { Star, Award, Loader2, Plus, X, Flame, Search, CheckCircle2 } from 'lucide-react';
+import { Star, Award, Loader2, Plus, X, Flame, Search, CheckCircle2, Crown } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 const TopPersonal = () => {
@@ -348,7 +348,7 @@ const TopPersonal = () => {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             
             <div className="modal-header">
-              <h3>👑 Coronar Anime</h3>
+              <h3 style={{ display:'flex', alignItems:'center', gap:'6px' }}><Crown size={18} /> Coronar Anime</h3>
               <button className="btn-close" onClick={() => setIsModalOpen(false)} title="Cerrar"><X size={22} strokeWidth={2.5} /></button>
             </div>
 

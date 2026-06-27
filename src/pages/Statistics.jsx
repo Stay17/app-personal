@@ -4,7 +4,7 @@ import {
   Loader2, TrendingUp, Layers, Star, CheckCircle2, PlayCircle,
   Clock, PauseCircle, History, Skull, BarChart3, Clock4, Trophy,
   Flame, Target, BookOpen, Film, Eye, Sparkles, BarChart2,
-  Zap, AlertCircle, TrendingDown, ListChecks
+  Zap, AlertCircle, TrendingDown, ListChecks, Flag, Tv, Folder, Award
 } from 'lucide-react';
 
 /* ══════════════════════════════════════════════════════
@@ -232,7 +232,7 @@ const Statistics = () => {
   const radarItems = [
     ...casiTermina.map(a => ({
       anime: a,
-      tag: '🏁 Casi terminas',
+      tag: <><Flag size={9} style={{display:'inline',verticalAlign:'middle',marginRight:'3px'}}/> Casi terminas</>,
       desc: `Te quedan solo ${a.episodios_totales - a.episodio_actual} cap${a.episodios_totales - a.episodio_actual !== 1 ? 's' : ''} — ¡termínalo!`,
       color: '#10B981',
       bg: 'rgba(16,185,129,0.06)',
@@ -241,7 +241,7 @@ const Statistics = () => {
     })),
     ...pausadosConProgreso.map(a => ({
       anime: a,
-      tag: '⏸ Pausado con progreso',
+      tag: <><PauseCircle size={9} style={{display:'inline',verticalAlign:'middle',marginRight:'3px'}}/> Pausado con progreso</>,
       desc: `Llevas el cap ${a.episodio_actual}${a.episodios_totales > 0 ? ` de ${a.episodios_totales}` : ''} — ¿lo retomas?`,
       color: '#F97316',
       bg: 'rgba(249,115,22,0.06)',
@@ -250,7 +250,7 @@ const Statistics = () => {
     })),
     ...leQuedaMas.map(a => ({
       anime: a,
-      tag: '📺 Larga travesía',
+      tag: <><Tv size={9} style={{display:'inline',verticalAlign:'middle',marginRight:'3px'}}/> Larga travesía</>,
       desc: `Te quedan ${a.episodios_totales - a.episodio_actual} caps — ¡sigue el ritmo!`,
       color: '#3ea6ff',
       bg: 'rgba(62,166,255,0.06)',
@@ -259,7 +259,7 @@ const Statistics = () => {
     })),
     ...pendientesRecientes.map(a => ({
       anime: a,
-      tag: '📁 Pendiente reciente',
+      tag: <><Folder size={9} style={{display:'inline',verticalAlign:'middle',marginRight:'3px'}}/> Pendiente reciente</>,
       desc: `Lo agregaste recientemente — ¡empiézalo!`,
       color: '#A78BFA',
       bg: 'rgba(167,139,250,0.06)',
@@ -270,9 +270,9 @@ const Statistics = () => {
 
   // Podio helper
   const podioMeta = (rank) => {
-    if (rank === 1) return { badge: '🥇', color: '#FBBF24', glow: 'rgba(251,191,36,0.18)', label: 'ORO' };
-    if (rank === 2) return { badge: '🥈', color: '#94A3B8', glow: 'rgba(148,163,184,0.14)', label: 'PLATA' };
-    if (rank === 3) return { badge: '🥉', color: '#CD7F32', glow: 'rgba(205,127,50,0.14)', label: 'BRONCE' };
+    if (rank === 1) return { badge: <Trophy size={13}/>, color: '#FBBF24', glow: 'rgba(251,191,36,0.18)', label: 'ORO' };
+    if (rank === 2) return { badge: <Award size={13}/>, color: '#94A3B8', glow: 'rgba(148,163,184,0.14)', label: 'PLATA' };
+    if (rank === 3) return { badge: <Award size={13}/>, color: '#CD7F32', glow: 'rgba(205,127,50,0.14)', label: 'BRONCE' };
     return { badge: `#${rank}`, color: '#555', glow: 'transparent', label: `#${rank}` };
   };
 
@@ -574,7 +574,7 @@ const Statistics = () => {
                 <div style={{ background:'rgba(251,191,36,0.05)', border:'1px solid rgba(251,191,36,0.13)', borderRadius:'11px', padding:'12px 14px', display:'flex', alignItems:'center', gap:'11px', marginBottom:'9px' }}>
                   <img src={notaMax.imagen} alt={notaMax.titulo} style={{ width:'34px', height:'46px', objectFit:'cover', borderRadius:'6px', flexShrink:0 }}/>
                   <div style={{ minWidth:0 }}>
-                    <div style={{ fontSize:'0.64rem', color:'#FBBF24', fontWeight:800, textTransform:'uppercase', letterSpacing:'1px', marginBottom:'3px' }}>🏆 Mejor nota</div>
+                    <div style={{ fontSize:'0.64rem', color:'#FBBF24', fontWeight:800, textTransform:'uppercase', letterSpacing:'1px', marginBottom:'3px', display:'flex', alignItems:'center', gap:'4px' }}><Trophy size={10}/> Mejor nota</div>
                     <div style={{ fontSize:'0.86rem', color:'#fff', fontWeight:700, lineHeight:1.25, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>{notaMax.titulo}</div>
                     <div style={{ display:'flex', alignItems:'center', gap:'4px', color:'#FBBF24', fontWeight:900, fontSize:'0.88rem', marginTop:'3px' }}>
                       <Star size={12} fill="#FBBF24"/> {Number(notaMax.calificacion).toFixed(1)} / 10
@@ -586,7 +586,7 @@ const Statistics = () => {
                 <div style={{ background:'rgba(239,68,68,0.04)', border:'1px solid rgba(239,68,68,0.11)', borderRadius:'11px', padding:'12px 14px', display:'flex', alignItems:'center', gap:'11px', marginBottom:'12px' }}>
                   <img src={notaMin.imagen} alt={notaMin.titulo} style={{ width:'34px', height:'46px', objectFit:'cover', borderRadius:'6px', flexShrink:0 }}/>
                   <div style={{ minWidth:0 }}>
-                    <div style={{ fontSize:'0.64rem', color:'#EF4444', fontWeight:800, textTransform:'uppercase', letterSpacing:'1px', marginBottom:'3px' }}>📉 Peor nota</div>
+                    <div style={{ fontSize:'0.64rem', color:'#EF4444', fontWeight:800, textTransform:'uppercase', letterSpacing:'1px', marginBottom:'3px', display:'flex', alignItems:'center', gap:'4px' }}><TrendingDown size={10}/> Peor nota</div>
                     <div style={{ fontSize:'0.86rem', color:'#fff', fontWeight:700, lineHeight:1.25, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>{notaMin.titulo}</div>
                     <div style={{ display:'flex', alignItems:'center', gap:'4px', color:'#EF4444', fontWeight:900, fontSize:'0.88rem', marginTop:'3px' }}>
                       <Star size={12} fill="#EF4444" color="#EF4444"/> {Number(notaMin.calificacion).toFixed(1)} / 10
