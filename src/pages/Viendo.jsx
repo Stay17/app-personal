@@ -46,8 +46,8 @@ const Viendo = () => {
           cancelButtonColor: '#3ea6ff',
           confirmButtonText: 'Sí, ¡completado!',
           cancelButtonText: 'Seguir viendo',
-          background: '#1a1a1a',
-          color: '#ffffff',
+          background: 'var(--bg-card-solid, #1a1a1a)',
+          color: 'var(--text-main, #fff)',
           customClass: { popup: 'swal-premium-success' } // <-- Añadido
         });
 
@@ -86,8 +86,8 @@ const Viendo = () => {
       confirmButtonColor: '#EF4444',
       cancelButtonColor: '#3ea6ff',
       confirmButtonText: 'Sí, eliminar',
-      background: '#1a1a1a',
-      color: '#ffffff',
+      background: 'var(--bg-card-solid, #1a1a1a)',
+      color: 'var(--text-main, #fff)',
       customClass: { popup: 'swal-premium-danger' } // <-- Añadido
     });
 
@@ -107,15 +107,15 @@ const Viendo = () => {
     const { value: comentario } = await Swal.fire({
       title: 'Mandar al cementerio',
       html: `
-        <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 15px;">
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">
           Te quedaste en el <b style="color:#D4AF37;">capítulo ${anime.episodio_actual}</b>.
           Este progreso se guardará automáticamente.
         </p>
       `,
       input: 'textarea',
       inputPlaceholder: 'Escribe por qué lo dropeás (opcional)...',
-      inputAttributes: { style: 'background:rgba(255,255,255,0.05);color:#fff;border:1px solid rgba(212,175,55,0.3);border-radius:8px;resize:vertical;' },
-      background: 'rgba(20, 20, 20, 0.95)',
+      inputAttributes: { style: 'background:var(--border-subtle);color: var(--text-main);border:1px solid rgba(212,175,55,0.3);border-radius:8px;resize:vertical;' },
+      background: 'var(--bg-card-solid, #141414)',
       color: '#D4AF37',
       backdrop: 'rgba(0,0,0,0.8)',
       showCancelButton: true,
@@ -146,7 +146,7 @@ const Viendo = () => {
         Swal.fire({
           icon: 'success',
           title: 'Movido al cementerio',
-          background: 'rgba(20, 20, 20, 0.95)',
+          background: 'var(--bg-card-solid, #141414)',
           color: '#D4AF37',
           showConfirmButton: false,
           timer: 1500,
@@ -222,21 +222,18 @@ const Viendo = () => {
           transform: translateY(-1px);
         }
         .btn-delete:active { transform: translateY(0); box-shadow: none; }
-        .episode-controls { display: flex; align-items: center; justify-content: center; gap: 10px; background-color: rgba(255, 255, 255, 0.05); padding: 6px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); flex: 1; }
-        .btn-circle { width: 28px; height: 28px; border-radius: 50%; border: none; background-color: #3ea6ff; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.2s; }
+        .episode-controls { display: flex; align-items: center; justify-content: center; gap: 10px; background-color: var(--border-subtle); padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border-color); flex: 1; }
+        .btn-circle { width: 28px; height: 28px; border-radius: 50%; border: none; background-color: #3ea6ff; color: var(--text-main); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.2s; }
         .btn-circle:hover { background-color: #2b8ee0; }
-        .btn-circle:disabled { background-color: #555; cursor: not-allowed; }
-        .episodes-text { font-weight: bold; font-size: 0.85rem; color: #fff; min-width: 65px; text-align: center; }
-        .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 40vh; color: #aaa; text-align: center; }
+        .btn-circle:disabled { background-color: var(--text-muted); cursor: not-allowed; }
+        .episodes-text { font-weight: bold; font-size: 0.85rem; color: var(--text-main); min-width: 65px; text-align: center; }
+        .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 40vh; color: var(--text-muted); text-align: center; }
         
         /* SEARCH BAR */
-        .search-bar-container { position: relative; max-width: 350px; margin-bottom: 25px; }
-        .search-bar-input { width: 100%; padding: 10px 16px 10px 40px; background-color: #1a1a1a; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: white; font-size: 0.9rem; outline: none; transition: all 0.2s ease; }
-        .search-bar-input:focus { border-color: #3ea6ff; box-shadow: 0 0 0 2px rgba(62, 166, 255, 0.2); }
-        .search-bar-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.4); pointer-events: none; }
+        /* search-bar: estilos movidos a index.css */
 
         /* PROGRESS BAR BARRA PREMIUM */
-        .progress-container { width: 100%; height: 5px; background-color: rgba(255, 255, 255, 0.1); border-radius: 3px; margin-top: 10px; overflow: hidden; }
+        .progress-container { width: 100%; height: 5px; background-color: var(--border-color); border-radius: 3px; margin-top: 10px; overflow: hidden; }
         .progress-bar { height: 100%; background-color: #3ea6ff; transition: width 0.3s ease; }
 
         /* KEYFRAMES PARA EL SPIN */

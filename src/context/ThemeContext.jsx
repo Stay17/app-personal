@@ -17,11 +17,13 @@ export const ThemeProvider = ({ children }) => {
       document.body.style.backgroundSize = 'cover';
       document.body.style.backgroundPosition = 'center';
       document.body.style.backgroundAttachment = 'fixed';
+      document.body.classList.add('has-bg-image');
     } else {
       document.body.style.backgroundImage = '';
       document.body.style.backgroundSize = '';
       document.body.style.backgroundPosition = '';
       document.body.style.backgroundAttachment = '';
+      document.body.classList.remove('has-bg-image');
     }
   }, [bgImage]);
 

@@ -26,8 +26,8 @@ const Pendientes = () => {
         title: 'Error',
         text: 'No se pudieron cargar tus animes pendientes.',
         icon: 'error',
-        background: '#1a1a1a',
-        color: '#ffffff',
+        background: 'var(--bg-card-solid, #1a1a1a)',
+        color: 'var(--text-main, #fff)',
         customClass: { popup: 'swal-premium-danger' } // <-- Añadido
       });
     } finally {
@@ -49,8 +49,8 @@ const Pendientes = () => {
       cancelButtonColor: '#3ea6ff',
       confirmButtonText: 'Sí, empezar',
       cancelButtonText: 'Cancelar',
-      background: '#1a1a1a',
-      color: '#ffffff',
+      background: 'var(--bg-card-solid, #1a1a1a)',
+      color: 'var(--text-main, #fff)',
       customClass: { popup: 'swal-premium-question' } // <-- Añadido
     });
 
@@ -69,8 +69,8 @@ const Pendientes = () => {
           title: '¡Añadido a Viendo!',
           text: 'Prepara las palomitas',
           icon: 'success',
-          background: '#1a1a1a',
-          color: '#ffffff',
+          background: 'var(--bg-card-solid, #1a1a1a)',
+          color: 'var(--text-main, #fff)',
           timer: 1500,
           showConfirmButton: false,
           customClass: { popup: 'swal-premium-success' } // <-- Añadido
@@ -91,8 +91,8 @@ const Pendientes = () => {
       cancelButtonColor: '#3ea6ff',
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar',
-      background: '#1a1a1a',
-      color: '#ffffff',
+      background: 'var(--bg-card-solid, #1a1a1a)',
+      color: 'var(--text-main, #fff)',
       customClass: { popup: 'swal-premium-danger' } // <-- Añadido
     });
 
@@ -111,8 +111,8 @@ const Pendientes = () => {
           title: 'Eliminado!',
           text: 'El anime fue removido de tu lista.',
           icon: 'success',
-          background: '#1a1a1a',
-          color: '#ffffff',
+          background: 'var(--bg-card-solid, #1a1a1a)',
+          color: 'var(--text-main, #fff)',
           timer: 1500,
           showConfirmButton: false,
           customClass: { popup: 'swal-premium-success' } // <-- Añadido
@@ -123,8 +123,8 @@ const Pendientes = () => {
           title: 'Error',
           text: 'No se pudo eliminar el anime.',
           icon: 'error',
-          background: '#1a1a1a',
-          color: '#ffffff',
+          background: 'var(--bg-card-solid, #1a1a1a)',
+          color: 'var(--text-main, #fff)',
           customClass: { popup: 'swal-premium-danger' } // <-- Añadido
         });
       }
@@ -173,10 +173,7 @@ const Pendientes = () => {
 
         .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 40vh; color: var(--text-muted, #aaa); text-align: center; }
 
-        .search-bar-container { position: relative; max-width: 350px; margin-bottom: 25px; }
-        .search-bar-input { width: 100%; padding: 10px 16px 10px 40px; background-color: #1a1a1a; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: white; font-size: 0.9rem; outline: none; transition: all 0.2s ease; }
-        .search-bar-input:focus { border-color: var(--accent-color, #3ea6ff); box-shadow: 0 0 0 2px rgba(62, 166, 255, 0.2); }
-        .search-bar-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.4); pointer-events: none; }
+        /* search-bar: estilos movidos a index.css */
 
         @keyframes spin {
           0% { transform: rotate(0deg); }

@@ -25,8 +25,8 @@ const Completados = () => {
         title: 'Error', 
         text: 'No se pudieron cargar tus animes completados.', 
         icon: 'error', 
-        background: '#1a1a1a', 
-        color: '#fff',
+        background: 'var(--bg-card-solid, #1a1a1a)', 
+        color: 'var(--text-main, #fff)',
         backdrop: 'rgba(0,0,0,0.8)',
         customClass: { popup: 'swal-error-popup' }
       });
@@ -49,8 +49,8 @@ const Completados = () => {
       cancelButtonColor: '#3ea6ff',
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar',
-      background: '#1a1a1a',
-      color: '#ffffff',
+      background: 'var(--bg-card-solid, #1a1a1a)',
+      color: 'var(--text-main, #fff)',
       backdrop: 'rgba(0,0,0,0.8)',
       customClass: { popup: 'swal-delete-popup' }
     });
@@ -63,8 +63,8 @@ const Completados = () => {
         Swal.fire({ 
           title: '¡Eliminado!', 
           icon: 'success', 
-          background: '#1a1a1a', 
-          color: '#fff', 
+          background: 'var(--bg-card-solid, #1a1a1a)', 
+          color: 'var(--text-main, #fff)', 
           timer: 1500, 
           showConfirmButton: false,
           backdrop: 'rgba(0,0,0,0.8)',
@@ -101,7 +101,7 @@ const Completados = () => {
 
         .btn-delete {
           background-color: transparent;
-          color: rgba(239, 68, 68, 0.7);
+          color: #EF4444;
           border: none;
           border-radius: 8px;
           padding: 6px;
@@ -122,14 +122,19 @@ const Completados = () => {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          color: #00e676;
-          background: rgba(0, 230, 118, 0.1);
+          color: #047857;
+          background: rgba(16, 185, 129, 0.12);
           padding: 4px 12px;
           border-radius: 20px;
           font-size: 0.7rem;
           font-weight: 700;
           letter-spacing: 0.5px;
           text-transform: uppercase;
+          border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        [data-theme="dark"] .badge-completado-new {
+          color: #00e676;
+          background: rgba(0, 230, 118, 0.1);
           border: 1px solid rgba(0, 230, 118, 0.2);
         }
 
@@ -139,38 +144,14 @@ const Completados = () => {
           align-items: center;
           justify-content: center;
           height: 40vh;
-          color: var(--text-muted, #aaa);
+          color: var(--text-muted);
           text-align: center;
         }
+        .empty-state h3 {
+          color: var(--text-main);
+        }
         
-        .search-bar-container {
-          position: relative;
-          max-width: 350px;
-          margin-bottom: 25px;
-        }
-        .search-bar-input {
-          width: 100%;
-          padding: 10px 16px 10px 40px;
-          background-color: #1a1a1a;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 8px;
-          color: white;
-          font-size: 0.9rem;
-          outline: none;
-          transition: all 0.2s ease;
-        }
-        .search-bar-input:focus {
-          border-color: var(--accent-color, #3ea6ff);
-          box-shadow: 0 0 0 2px rgba(62, 166, 255, 0.2);
-        }
-        .search-bar-icon {
-          position: absolute;
-          left: 12px;
-          top: 50%;
-          transform: translateY(-50%);
-          color: rgba(255, 255, 255, 0.4);
-          pointer-events: none;
-        }
+        /* search-bar: estilos movidos a index.css */
         @keyframes spin {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
@@ -181,6 +162,7 @@ const Completados = () => {
           font-size: 0.95rem;
           line-height: 1.3;
           margin-bottom: 8px;
+          color: var(--text-heading);
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
@@ -231,9 +213,9 @@ const Completados = () => {
                 <h3 className="anime-title-clamp">{anime.titulo}</h3>
                 
                 {/* FECHA Y CAPÍTULOS EN LA MISMA LÍNEA (Libera espacio abajo) */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)', marginBottom: 'auto' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 'auto' }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <CalendarDays size={14} color="#10B981" />
+                    <CalendarDays size={14} color="var(--success)" />
                     {formatearFecha(anime.fecha_agregado)}
                   </span>
                   
@@ -244,7 +226,7 @@ const Completados = () => {
                 </div>
 
                 {/* LÍNEA SEPARADORA SUTIL */}
-                <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.08)', margin: '12px 0 10px 0' }}></div>
+                <div style={{ height: '1px', backgroundColor: 'var(--border-subtle)', margin: '12px 0 10px 0' }}></div>
                 
                 {/* FOOTER: BADGE REDISEÑADO Y BOTÓN ELIMINAR */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

@@ -616,3 +616,145 @@ h1, h2, h4 {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px var(--accent-glow);
 }
+
+/* ══════════════════════════════════════════════════════
+   BUSCADOR DE SECCIONES (tema-aware — reemplaza hardcoded)
+══════════════════════════════════════════════════════ */
+.search-bar-container {
+  position: relative;
+  max-width: 350px;
+  margin-bottom: 25px;
+}
+
+.search-bar-input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  background-color: var(--bg-card-solid);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-family: var(--font-main);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-bar-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-bar-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.search-bar-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════
+   FONDO PERSONALIZADO — overlay adaptativo por tema
+══════════════════════════════════════════════════════ */
+body.has-bg-image {
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+}
+
+body.has-bg-image::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  /* Oscuro: overlay oscuro semitransparente */
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(1px);
+  transition: background 0.3s;
+}
+
+[data-theme="light"] body.has-bg-image::before {
+  /* Claro: overlay claro semitransparente */
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* ══════════════════════════════════════════════════════
+   DROPDOWN GÉNEROS (tema-aware)
+══════════════════════════════════════════════════════ */
+.genre-dropdown-portal {
+  background: var(--bg-card-solid) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+
+.genre-dropdown-portal input {
+  background: var(--bg-input) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+
+.genre-dropdown-portal input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   ESTADÍSTICAS — cards y textos tema-aware
+══════════════════════════════════════════════════════ */
+.stat-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+
+.stat-label {
+  color: var(--text-muted) !important;
+}
+
+.stat-value {
+  color: var(--text-heading) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   SWAL — respeta el tema actual
+══════════════════════════════════════════════════════ */
+[data-theme="light"] .swal2-popup {
+  background: var(--bg-card-solid) !important;
+  color: var(--text-main) !important;
+}
+[data-theme="light"] .swal2-title {
+  color: var(--text-heading) !important;
+}
+[data-theme="light"] .swal2-html-container {
+  color: var(--text-muted) !important;
+}
+[data-theme="light"] .swal2-input,
+[data-theme="light"] .swal2-textarea {
+  background: var(--bg-input) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   CARDS DE SECCIONES — fecha e iconos visibles en ambos temas
+══════════════════════════════════════════════════════ */
+.card-date {
+  color: var(--text-muted) !important;
+  font-size: 0.8rem;
+}
+
+.card-badge-terminado {
+  color: var(--success) !important;
+  background: rgba(16, 185, 129, 0.1) !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}

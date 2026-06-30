@@ -51,8 +51,8 @@ const TopPersonal = () => {
         title: 'Lista vacía', 
         text: 'No tienes animes completados disponibles para coronar.', 
         icon: 'info', 
-        background: '#1a1a1a', 
-        color: '#fff',
+        background: 'var(--bg-card-solid)', 
+        color: 'var(--text-main)',
         confirmButtonColor: '#F59E0B',
         customClass: { popup: 'swal-premium-info' } // <-- Añadido
       });
@@ -72,8 +72,8 @@ const TopPersonal = () => {
         title: 'Faltan datos', 
         text: 'Selecciona un anime, su puesto y su nota.', 
         icon: 'warning', 
-        background: '#1a1a1a', 
-        color: '#fff', 
+        background: 'var(--bg-card-solid)', 
+        color: 'var(--text-main)', 
         timer: 2000,
         customClass: { popup: 'swal-premium-warning' } // <-- Añadido
       });
@@ -95,8 +95,8 @@ const TopPersonal = () => {
       Swal.fire({ 
         title: '¡Coronado!', 
         icon: 'success', 
-        background: '#1a1a1a', 
-        color: '#fff', 
+        background: 'var(--bg-card-solid)', 
+        color: 'var(--text-main)', 
         timer: 1500, 
         showConfirmButton: false,
         customClass: { popup: 'swal-premium-success' } // <-- Añadido
@@ -117,8 +117,8 @@ const TopPersonal = () => {
       cancelButtonColor: '#3f3f46',
       confirmButtonText: 'Sí, quitar',
       cancelButtonText: 'Cancelar',
-      background: '#1a1a1a',
-      color: '#ffffff',
+      background: 'var(--bg-card-solid)',
+      color: 'var(--text-main)',
       customClass: { popup: 'swal-premium-danger' } // <-- Añadido
     });
 
@@ -160,36 +160,29 @@ const TopPersonal = () => {
         }
         /* ----------------------------------------------- */
 
-        /* =========================================
-           SISTEMA DE GRID - ALINEADO A LA IZQUIERDA
-           ========================================= */
         .anime-grid {
           display: grid;
-          /* auto-fill crea las columnas y si sobran espacios se quedan vacíos, anclando todo a la izquierda */
           grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
           gap: 25px;
           padding: 20px 0;
           justify-content: start; 
         }
 
-        /* =========================================
-           TARJETA PRINCIPAL (CARD)
-           ========================================= */
         .anime-card {
           display: flex;
           flex-direction: column;
-          background-color: #1f1f1f;
+          background-color: var(--bg-card-solid);
           border-radius: 12px;
           overflow: hidden;
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--border-color);
           transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .anime-card:hover {
           transform: translateY(-6px);
           box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
-          border-color: rgba(245, 158, 11, 0.3); /* Brillo dorado suave al pasar el mouse */
+          border-color: rgba(245, 158, 11, 0.3);
         }
 
         .anime-poster {
@@ -204,13 +197,13 @@ const TopPersonal = () => {
           flex-direction: column;
           flex-grow: 1;
           padding: 16px;
-          background: linear-gradient(to bottom, #1f1f1f 0%, #151515 100%);
+          background: var(--bg-card-solid);
         }
 
         .anime-title {
           font-size: 1.05rem;
           font-weight: 700;
-          color: #ffffff;
+          color: var(--text-heading);
           margin: 0 0 15px 0;
           line-height: 1.3;
           display: -webkit-box;
@@ -220,62 +213,57 @@ const TopPersonal = () => {
           text-overflow: ellipsis;
         }
 
-        /* =========================================
-           BADGES Y CONTROLES DE LA TARJETA
-           ========================================= */
         .rank-gold { background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.25)); color: #FBBF24; border: 1px solid rgba(251, 191, 36, 0.4); box-shadow: 0 0 10px rgba(251, 191, 36, 0.1); }
-        .rank-silver { background: linear-gradient(135deg, rgba(226, 232, 240, 0.1), rgba(148, 163, 184, 0.2)); color: #CBD5E1; border: 1px solid rgba(148, 163, 184, 0.3); }
-        .rank-bronze { background: linear-gradient(135deg, rgba(253, 186, 116, 0.1), rgba(202, 138, 4, 0.2)); color: #FDBA74; border: 1px solid rgba(202, 138, 4, 0.3); }
-        .rank-normal { background: rgba(255, 255, 255, 0.03); color: rgba(255, 255, 255, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .rank-silver { background: linear-gradient(135deg, rgba(226, 232, 240, 0.15), rgba(148, 163, 184, 0.25)); color: #475569; border: 1px solid rgba(148, 163, 184, 0.35); }
+        .rank-bronze { background: linear-gradient(135deg, rgba(253, 186, 116, 0.15), rgba(202, 138, 4, 0.25)); color: #92400e; border: 1px solid rgba(202, 138, 4, 0.35); }
+        .rank-normal { background: var(--border-subtle); color: var(--text-main); border: 1px solid var(--border-color); }
+
+        [data-theme="light"] .rank-silver { color: #475569; }
+        [data-theme="light"] .rank-bronze { color: #92400e; }
         
         .badge-rank { display: flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        .remove-btn { background: rgba(239, 68, 68, 0.05); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.2); width: 28px; height: 28px; border-radius: 6px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
-        .remove-btn:hover { background: #EF4444; color: white; transform: scale(1.05); }
+        .remove-btn { background: rgba(239, 68, 68, 0.08); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.25); width: 28px; height: 28px; border-radius: 6px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+        .remove-btn:hover { background: #EF4444; color: #ffffff; transform: scale(1.05); }
 
-        /* =========================================
-           ENCABEZADO Y BÚSQUEDA
-           ========================================= */
-        .top-title { color: #3ea6ff; font-size: 1.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .top-title { color: var(--accent-color); font-size: 1.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
         
-        .btn-add-top { background: linear-gradient(135deg, #F59E0B, #D97706); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); margin-bottom: 25px; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.2); }
+        .btn-add-top { background: linear-gradient(135deg, #F59E0B, #D97706); color: #ffffff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); margin-bottom: 25px; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.2); }
         .btn-add-top:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(245, 158, 11, 0.4); filter: brightness(1.1); }
 
         .search-bar-container { position: relative; max-width: 350px; margin-bottom: 25px; }
-        .search-bar-input { width: 100%; padding: 12px 16px 12px 42px; background-color: #1a1a1a; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: white; font-size: 0.95rem; outline: none; transition: all 0.3s ease; }
+        .search-bar-input { width: 100%; padding: 12px 16px 12px 42px; background-color: var(--bg-card-solid); border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-main); font-size: 0.95rem; outline: none; transition: all 0.3s ease; }
         .search-bar-input:focus { border-color: #F59E0B; box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2); }
-        .search-bar-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.4); }
+        .search-bar-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
 
-        /* =========================================
-           MODAL MEJORADO
-           ========================================= */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 20px; backdrop-filter: blur(4px); }
-        .modal-content { background: #18181b; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; width: 100%; max-width: 480px; padding: 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); display: flex; flex-direction: column; gap: 18px; animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .modal-overlay { position: fixed; inset: 0; background: var(--bg-modal-overlay); display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 20px; backdrop-filter: blur(4px); }
+        .modal-content { background: var(--bg-modal); border: 1px solid var(--border-subtle); border-radius: 16px; width: 100%; max-width: 480px; padding: 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 18px; animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes modalFadeIn { from { opacity: 0; transform: translateY(-20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 16px; margin-bottom: 5px; }
-        .modal-header h3 { margin: 0; color: #fff; font-size: 1.4rem; display: flex; align-items: center; gap: 10px; font-weight: 700; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px; margin-bottom: 5px; }
+        .modal-header h3 { margin: 0; color: var(--text-main); font-size: 1.4rem; display: flex; align-items: center; gap: 10px; font-weight: 700; }
         
-        .btn-close { background: rgba(255,255,255,0.05); border: none; color: #aaa; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; padding: 6px; border-radius: 8px; }
-        .btn-close:hover { color: #fff; background: rgba(239, 68, 68, 0.8); transform: rotate(90deg); }
+        .btn-close { background: var(--border-subtle); border: none; color: var(--text-muted); cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; padding: 6px; border-radius: 8px; }
+        .btn-close:hover { color: #ffffff; background: rgba(239, 68, 68, 0.8); transform: rotate(90deg); }
         
-        .modal-list-container { max-height: 240px; overflow-y: auto; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 8px; margin-top: 5px; }
+        .modal-list-container { max-height: 240px; overflow-y: auto; background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 8px; margin-top: 5px; }
         .modal-list-container::-webkit-scrollbar { width: 8px; }
         .modal-list-container::-webkit-scrollbar-track { background: transparent; }
-        .modal-list-container::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
-        .modal-list-container::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+        .modal-list-container::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+        .modal-list-container::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
         
-        .modal-item { padding: 14px 16px; border-radius: 8px; cursor: pointer; color: #d4d4d8; font-size: 0.95rem; transition: all 0.2s ease; display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
-        .modal-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
-        .modal-item.selected { background: rgba(245, 158, 11, 0.1); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); font-weight: 600; box-shadow: inset 0 0 15px rgba(245, 158, 11, 0.05); }
+        .modal-item { padding: 14px 16px; border-radius: 8px; cursor: pointer; color: var(--text-main); font-size: 0.95rem; transition: all 0.2s ease; display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+        .modal-item:hover { background: var(--border-subtle); color: var(--text-main); }
+        .modal-item.selected { background: rgba(245, 158, 11, 0.12); color: #92400e; border: 1px solid rgba(245, 158, 11, 0.3); font-weight: 600; box-shadow: inset 0 0 15px rgba(245, 158, 11, 0.05); }
+        [data-theme="dark"] .modal-item.selected { color: #F59E0B; }
         
         .modal-inputs { display: flex; gap: 20px; margin-top: 10px; }
         .modal-input-group { flex: 1; display: flex; flex-direction: column; gap: 8px; }
-        .modal-input-group label { color: #a1a1aa; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .modal-input { background: #111; border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 10px; color: white; outline: none; transition: all 0.3s; font-size: 1rem; }
-        .modal-input:focus { border-color: #F59E0B; box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15); background: #1a1a1a; }
+        .modal-input-group label { color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .modal-input { background: var(--bg-input); border: 1px solid var(--border-color); padding: 12px 16px; border-radius: 10px; color: var(--text-main); outline: none; transition: all 0.3s; font-size: 1rem; }
+        .modal-input:focus { border-color: #F59E0B; box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15); background: var(--bg-card-solid); }
         
-        .btn-save-modal { background: linear-gradient(135deg, #F59E0B, #D97706); color: white; border: none; padding: 16px; border-radius: 10px; font-weight: 800; cursor: pointer; margin-top: 15px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2); }
+        .btn-save-modal { background: linear-gradient(135deg, #F59E0B, #D97706); color: #ffffff; border: none; padding: 16px; border-radius: 10px; font-weight: 800; cursor: pointer; margin-top: 15px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2); }
         .btn-save-modal:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4); filter: brightness(1.1); }
       `}</style>
 
@@ -300,9 +288,9 @@ const TopPersonal = () => {
           <Loader2 size={45} className="spin-icon" style={{ animation: 'spin 1s linear infinite' }} />
         </div>
       ) : topAnimes.length === 0 ? (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '40vh', color: '#a1a1aa', textAlign: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '40vh', color: 'var(--text-muted)', textAlign: 'center' }}>
           <Award size={70} style={{ marginBottom: '20px', opacity: 0.3 }} />
-          <h3 style={{ fontSize: '1.5rem', color: '#fff', marginBottom: '10px' }}>Aún no tienes animes en tu Top</h3>
+          <h3 style={{ fontSize: '1.5rem', color: 'var(--text-main)', marginBottom: '10px' }}>Aún no tienes animes en tu Top</h3>
           <p style={{ fontSize: '1rem' }}>Dale al botón "Coronar Anime" para empezar a armar tu podio.</p>
         </div>
       ) : (
@@ -327,9 +315,8 @@ const TopPersonal = () => {
 
                   <h3 className="anime-title">{anime.titulo}</h3>
                   
-                  {/* Contenedor flexible para empujar la nota hacia abajo si el título es corto */}
-                  <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '12px' }}>
-                    <span style={{ fontSize: '0.85rem', color: '#a1a1aa', fontWeight: '500' }}>Nota oficial</span>
+                  <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-subtle)', paddingTop: '12px' }}>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '500' }}>Nota oficial</span>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#F59E0B', fontWeight: '800', fontSize: '1.1rem' }}>
                       <span>{Number(anime.calificacion).toFixed(1)}</span>
                       <Star size={16} fill="#F59E0B" color="#F59E0B" /> 
@@ -359,7 +346,7 @@ const TopPersonal = () => {
 
             <div className="modal-list-container">
               {disponiblesFiltrados.length === 0 ? (
-                <div style={{ padding: '20px', textAlign: 'center', color: '#71717a' }}>No se encontraron animes completados con ese nombre.</div>
+                <div style={{ padding: '20px', textAlign: 'center', color: 'var(--text-muted)' }}>No se encontraron animes completados con ese nombre.</div>
               ) : (
                 disponiblesFiltrados.map(anime => (
                   <div 

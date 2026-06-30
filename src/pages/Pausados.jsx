@@ -25,8 +25,8 @@ const Pausados = () => {
         title: 'Error', 
         text: 'No se pudieron cargar tus animes pausados.', 
         icon: 'error', 
-        background: '#1a1a1a', 
-        color: '#fff',
+        background: 'var(--bg-card-solid, #1a1a1a)', 
+        color: 'var(--text-main, #fff)',
         backdrop: 'rgba(0,0,0,0.8)',
         customClass: { popup: 'swal-error-popup' }
       });
@@ -47,8 +47,8 @@ const Pausados = () => {
         icon: 'warning',
         title: 'Límite alcanzado',
         text: `Este anime solo tiene ${anime.episodios_totales} capítulos.`,
-        background: '#1a1a1a',
-        color: '#fff',
+        background: 'var(--bg-card-solid, #1a1a1a)',
+        color: 'var(--text-main, #fff)',
         confirmButtonColor: '#3ea6ff',
         backdrop: 'rgba(0,0,0,0.8)',
         customClass: { popup: 'swal-warning-popup' }
@@ -75,8 +75,8 @@ const Pausados = () => {
         title: 'Error', 
         text: 'No se pudo actualizar el episodio.', 
         icon: 'error', 
-        background: '#1a1a1a', 
-        color: '#fff',
+        background: 'var(--bg-card-solid, #1a1a1a)', 
+        color: 'var(--text-main, #fff)',
         backdrop: 'rgba(0,0,0,0.8)',
         customClass: { popup: 'swal-error-popup' }
       });
@@ -93,8 +93,8 @@ const Pausados = () => {
       confirmButtonText: 'Guardar',
       cancelButtonText: 'Cancelar',
       confirmButtonColor: '#3ea6ff',
-      background: '#1a1a1a',
-      color: '#ffffff',
+      background: 'var(--bg-card-solid, #1a1a1a)',
+      color: 'var(--text-main, #fff)',
       backdrop: 'rgba(0,0,0,0.8)',
       customClass: { popup: 'swal-info-popup' },
       inputValidator: (value) => {
@@ -127,8 +127,8 @@ const Pausados = () => {
         title: '¡Reanudado!', 
         text: `"${titulo}" volvió a tu lista de Viendo.`, 
         icon: 'success', 
-        background: '#1a1a1a', 
-        color: '#fff', 
+        background: 'var(--bg-card-solid, #1a1a1a)', 
+        color: 'var(--text-main, #fff)', 
         timer: 1500, 
         showConfirmButton: false,
         backdrop: 'rgba(0,0,0,0.8)',
@@ -149,8 +149,8 @@ const Pausados = () => {
       cancelButtonColor: '#3ea6ff',
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar',
-      background: '#1a1a1a',
-      color: '#ffffff',
+      background: 'var(--bg-card-solid, #1a1a1a)',
+      color: 'var(--text-main, #fff)',
       backdrop: 'rgba(0,0,0,0.8)',
       customClass: { popup: 'swal-delete-popup' }
     });
@@ -163,8 +163,8 @@ const Pausados = () => {
         Swal.fire({ 
           title: '¡Eliminado!', 
           icon: 'success', 
-          background: '#1a1a1a', 
-          color: '#fff', 
+          background: 'var(--bg-card-solid, #1a1a1a)', 
+          color: 'var(--text-main, #fff)', 
           timer: 1500, 
           showConfirmButton: false,
           backdrop: 'rgba(0,0,0,0.8)',
@@ -212,7 +212,7 @@ const Pausados = () => {
           transition: all 0.2s ease;
         }
         .btn-delete {
-          color: rgba(239, 68, 68, 0.7);
+          color: #EF4444;
         }
         .btn-delete:hover {
           background-color: rgba(239, 68, 68, 0.15);
@@ -220,11 +220,11 @@ const Pausados = () => {
           transform: scale(1.1);
         }
         .btn-resume {
-          color: rgba(62, 166, 255, 0.7);
+          color: var(--accent-color);
         }
         .btn-resume:hover {
           background-color: rgba(62, 166, 255, 0.15);
-          color: #3ea6ff;
+          color: var(--accent-color);
           transform: scale(1.1);
         }
         
@@ -232,31 +232,36 @@ const Pausados = () => {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          color: #94A3B8;
-          background: rgba(148, 163, 184, 0.1);
+          color: #c2410c;
+          background: rgba(249, 115, 22, 0.12);
           padding: 4px 12px;
           border-radius: 20px;
           font-size: 0.7rem;
           font-weight: 700;
           letter-spacing: 0.5px;
           text-transform: uppercase;
-          border: 1px solid rgba(148, 163, 184, 0.2);
+          border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+        [data-theme="dark"] .badge-pausado-new {
+          color: #fb923c;
+          background: rgba(249, 115, 22, 0.12);
+          border: 1px solid rgba(249, 115, 22, 0.3);
         }
 
         .ep-controls-container {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          background-color: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background-color: var(--bg-input);
+          border: 1px solid var(--border-subtle);
           padding: 6px 8px;
           border-radius: 8px;
         }
 
         .ep-btn {
-          background: rgba(148, 163, 184, 0.15);
+          background: var(--bg-input);
           border: none;
-          color: #94A3B8;
+          color: var(--text-muted);
           width: 26px;
           height: 26px;
           border-radius: 6px;
@@ -267,13 +272,13 @@ const Pausados = () => {
           transition: all 0.2s;
         }
         .ep-btn:hover:not(:disabled) {
-          background: rgba(148, 163, 184, 0.4);
-          color: #ffffff;
+          background: var(--bg-input-hover);
+          color: var(--text-main);
         }
         .ep-text {
           font-size: 0.85rem;
           font-weight: 600;
-          color: #e2e8f0;
+          color: var(--text-main);
           min-width: 50px;
           text-align: center;
           cursor: pointer;
@@ -282,7 +287,7 @@ const Pausados = () => {
           transition: background 0.2s;
         }
         .ep-text:hover {
-          background: rgba(255, 255, 255, 0.1);
+          background: var(--border-color);
         }
 
         .empty-state {
@@ -294,39 +299,16 @@ const Pausados = () => {
           color: var(--text-muted);
           text-align: center;
         }
-        .search-bar-container {
-          position: relative;
-          max-width: 350px;
-          margin-bottom: 25px;
+        .empty-state h3 {
+          color: var(--text-main);
         }
-        .search-bar-input {
-          width: 100%;
-          padding: 10px 16px 10px 40px;
-          background-color: #1a1a1a;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 8px;
-          color: white;
-          font-size: 0.9rem;
-          outline: none;
-          transition: all 0.2s ease;
-        }
-        .search-bar-input:focus {
-          border-color: var(--accent-color, #3ea6ff);
-          box-shadow: 0 0 0 2px rgba(62, 166, 255, 0.2);
-        }
-        .search-bar-icon {
-          position: absolute;
-          left: 12px;
-          top: 50%;
-          transform: translateY(-50%);
-          color: rgba(255, 255, 255, 0.4);
-          pointer-events: none;
-        }
+        /* search-bar: estilos movidos a index.css */
 
         .anime-title-clamp {
           font-size: 0.95rem;
           line-height: 1.3;
           margin: 0; 
+          color: var(--text-heading);
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
@@ -387,9 +369,9 @@ const Pausados = () => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: 'auto' }}>
                   
                   {/* FECHA Y CAPÍTULOS TOTALES */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)', marginTop: '8px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '8px' }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <CalendarDays size={14} color="#94A3B8" />
+                      <CalendarDays size={14} color="var(--text-muted)" />
                       {formatearFecha(anime.fecha_agregado)}
                     </span>
                     
@@ -436,7 +418,7 @@ const Pausados = () => {
                   </div>
 
                   {/* LÍNEA SEPARADORA SUTIL */}
-                  <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.08)' }}></div>
+                  <div style={{ height: '1px', backgroundColor: 'var(--border-subtle)' }}></div>
                   
                   {/* FOOTER: BADGE Y BOTONES DE ACCIÓN */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

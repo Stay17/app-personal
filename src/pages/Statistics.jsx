@@ -45,13 +45,13 @@ const HBar = ({ label, count, max, color, icon, delay = 0, total = 0 }) => {
           {icon} {label}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ fontSize: '0.72rem', color: '#3a3a3a' }}>
+          <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
             {total > 0 ? `${((count / total) * 100).toFixed(0)}%` : '0%'}
           </span>
-          <span style={{ fontSize: '0.88rem', color: '#fff', fontWeight: 900, minWidth: '20px', textAlign: 'right' }}>{count}</span>
+          <span style={{ fontSize: '0.88rem', color: 'var(--text-heading)', fontWeight: 900, minWidth: '20px', textAlign: 'right' }}>{count}</span>
         </div>
       </div>
-      <div style={{ height: '7px', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', overflow: 'hidden' }}>
+      <div style={{ height: '7px', background: 'var(--border-subtle)', borderRadius: '20px', overflow: 'hidden' }}>
         <div style={{
           height: '100%', width: `${w}%`,
           background: `linear-gradient(90deg, ${color}99, ${color})`,
@@ -113,8 +113,8 @@ const VBar = ({ label, count, max, color, delay = 0 }) => {
   }, [count, max, delay]);
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px' }}>
-      <span style={{ fontSize: '0.85rem', fontWeight: 900, color: count > 0 ? '#fff' : '#2a2a2a' }}>{count}</span>
-      <div style={{ width: '100%', height: '80px', background: 'rgba(255,255,255,0.04)', borderRadius: '7px 7px 3px 3px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', overflow: 'hidden' }}>
+      <span style={{ fontSize: '0.85rem', fontWeight: 900, color: count > 0 ? 'var(--text-heading)' : 'var(--border-color)' }}>{count}</span>
+      <div style={{ width: '100%', height: '80px', background: 'var(--border-subtle)', borderRadius: '7px 7px 3px 3px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', overflow: 'hidden' }}>
         <div style={{
           width: '100%', height: `${h}%`,
           background: `linear-gradient(180deg, ${color}, ${color}77)`,
@@ -122,7 +122,7 @@ const VBar = ({ label, count, max, color, delay = 0 }) => {
           boxShadow: `0 0 12px ${color}55`,
         }} />
       </div>
-      <span style={{ fontSize: '0.7rem', color: '#555', fontWeight: 700 }}>{label}</span>
+      <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 700 }}>{label}</span>
     </div>
   );
 };
@@ -192,7 +192,7 @@ const Statistics = () => {
   // Config estados
   const estadosConf = [
     { key:'completado', label:'Completados', count: completados, color:'#10B981', icon:<CheckCircle2 size={14}/> },
-    { key:'viendo',     label:'Viendo',      count: viendo,      color:'#3ea6ff', icon:<PlayCircle   size={14}/> },
+    { key:'viendo',     label:'Viendo',      count: viendo,      color: 'var(--accent-color)', icon:<PlayCircle   size={14}/> },
     { key:'pendiente',  label:'Pendientes',  count: pendientes,  color:'#F59E0B', icon:<Clock        size={14}/> },
     { key:'pausado',    label:'Pausados',    count: pausados,    color:'#F97316', icon:<PauseCircle  size={14}/> },
     { key:'atrasado',   label:'Atrasados',   count: atrasados,   color:'#A78BFA', icon:<History      size={14}/> },
@@ -252,7 +252,7 @@ const Statistics = () => {
       anime: a,
       tag: <><Tv size={9} style={{display:'inline',verticalAlign:'middle',marginRight:'3px'}}/> Larga travesía</>,
       desc: `Te quedan ${a.episodios_totales - a.episodio_actual} caps — ¡sigue el ritmo!`,
-      color: '#3ea6ff',
+      color: 'var(--accent-color)',
       bg: 'rgba(62,166,255,0.06)',
       border: 'rgba(62,166,255,0.2)',
       pct: a.episodios_totales > 0 ? (a.episodio_actual / a.episodios_totales) * 100 : 0,
@@ -273,7 +273,7 @@ const Statistics = () => {
     if (rank === 1) return { badge: <Trophy size={13}/>, color: '#FBBF24', glow: 'rgba(251,191,36,0.18)', label: 'ORO' };
     if (rank === 2) return { badge: <Award size={13}/>, color: '#94A3B8', glow: 'rgba(148,163,184,0.14)', label: 'PLATA' };
     if (rank === 3) return { badge: <Award size={13}/>, color: '#CD7F32', glow: 'rgba(205,127,50,0.14)', label: 'BRONCE' };
-    return { badge: `#${rank}`, color: '#555', glow: 'transparent', label: `#${rank}` };
+    return { badge: `#${rank}`, color: 'var(--text-muted)', glow: 'transparent', label: `#${rank}` };
   };
 
   /* ── LOADER ── */
@@ -293,7 +293,7 @@ const Statistics = () => {
 
         /* ── Panel base ── */
         .sp {
-          background: rgba(10,10,13,0.93);
+          background: var(--bg-card);
           border: 1px solid rgba(255,255,255,0.055);
           border-radius: 18px;
           padding: 24px 26px;
@@ -306,12 +306,12 @@ const Statistics = () => {
           border-bottom: 1px solid rgba(255,255,255,0.055);
         }
         .sp-title-end {
-          margin-left: auto; font-size: 0.72rem; color: #3a3a3a; font-weight: 500;
+          margin-left: auto; font-size: 0.72rem; color: var(--text-muted); font-weight: 500;
         }
 
         /* ── KPI card ── */
         .kc {
-          background: rgba(14,14,17,0.92);
+          background: var(--bg-card);
           border: 1px solid rgba(255,255,255,0.06);
           border-radius: 16px;
           padding: 22px 24px;
@@ -323,12 +323,12 @@ const Statistics = () => {
         }
         .kc:hover { transform: translateY(-3px); }
         .kc-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .kc-val  { font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 4px; }
+        .kc-val  { font-size: 2rem; font-weight: 900; color: var(--text-heading); line-height: 1; margin-bottom: 4px; }
         .kc-lbl  { font-size: 0.67rem; color: #505050; text-transform: uppercase; letter-spacing: 1.4px; font-weight: 700; margin-bottom: 3px; }
-        .kc-sub  { font-size: 0.73rem; color: #3a3a3a; }
+        .kc-sub  { font-size: 0.73rem; color: var(--text-muted); }
 
         /* ── Compound bar ── */
-        .cbar { width: 100%; height: 10px; border-radius: 20px; background: rgba(255,255,255,0.04); display: flex; overflow: hidden; margin: 16px 0; }
+        .cbar { width: 100%; height: 10px; border-radius: 20px; background: var(--border-subtle); display: flex; overflow: hidden; margin: 16px 0; }
 
         /* ── Chip tasas ── */
         .chip {
@@ -340,17 +340,17 @@ const Statistics = () => {
 
         /* ── Record card ── */
         .rc {
-          background: rgba(255,255,255,0.022);
+          background: var(--border-subtle);
           border: 1px solid rgba(255,255,255,0.055);
           border-radius: 13px; padding: 18px 20px;
           display: flex; align-items: center; gap: 16px;
           transition: background 0.2s;
         }
-        .rc:hover { background: rgba(255,255,255,0.04); }
+        .rc:hover { background: var(--bg-nav-hover); }
         .rc-icon { width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .rc-val  { font-size: 1.5rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 6px; }
-        .rc-lbl  { font-size: 0.67rem; color: #4a4a4a; text-transform: uppercase; letter-spacing: 1.1px; font-weight: 700; margin-bottom: 4px; }
-        .rc-desc { font-size: 0.76rem; color: #3d3d3d; }
+        .rc-val  { font-size: 1.5rem; font-weight: 900; color: var(--text-heading); line-height: 1; margin-bottom: 6px; }
+        .rc-lbl  { font-size: 0.67rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.1px; font-weight: 700; margin-bottom: 4px; }
+        .rc-desc { font-size: 0.76rem; color: var(--text-muted); }
 
         /* ── Radar card ── */
         .radar-card {
@@ -361,7 +361,7 @@ const Statistics = () => {
         }
         .radar-card:hover { transform: translateY(-2px); filter: brightness(1.08); }
         .radar-poster { width: 46px; height: 62px; object-fit: cover; border-radius: 8px; box-shadow: 0 3px 12px rgba(0,0,0,0.55); flex-shrink: 0; }
-        .radar-pbar-track { height: 4px; background: rgba(255,255,255,0.07); border-radius: 10px; margin-top: 8px; overflow: hidden; }
+        .radar-pbar-track { height: 4px; background: var(--border-subtle); border-radius: 10px; margin-top: 8px; overflow: hidden; }
         .radar-pbar-fill  { height: 100%; border-radius: 10px; transition: width 1s ease 0.3s; }
 
         /* ── Rank row ── */
@@ -369,15 +369,15 @@ const Statistics = () => {
           display: flex; align-items: center; gap: 12px;
           padding: 11px 14px; border-radius: 11px;
           border: 1px solid rgba(255,255,255,0.045);
-          background: rgba(255,255,255,0.018);
+          background: var(--border-subtle);
           transition: background 0.2s; margin-bottom: 7px;
         }
-        .rrow:hover { background: rgba(255,255,255,0.045); }
+        .rrow:hover { background: var(--bg-nav-hover); }
         .rrow-img { width: 34px; height: 46px; object-fit: cover; border-radius: 5px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
 
         /* ── Scrollbar fine ── */
         .fscroll::-webkit-scrollbar { width: 3px; }
-        .fscroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.07); border-radius: 10px; }
+        .fscroll::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 10px; }
         .fscroll::-webkit-scrollbar-track { background: transparent; }
       `}</style>
 
@@ -386,7 +386,7 @@ const Statistics = () => {
         <h2 style={{ fontSize:'1.75rem', fontWeight:900, color:'#F59E0B', textShadow:'0 0 28px rgba(245,158,11,0.25)', display:'flex', alignItems:'center', gap:'10px', margin:0 }}>
           <BarChart3 size={30}/> Dashboard Estadístico
         </h2>
-        {total > 0 && <span style={{ fontSize:'0.85rem', color:'#3a3a3a', fontWeight:600 }}>· {total} animes</span>}
+        {total > 0 && <span style={{ fontSize:'0.85rem', color: 'var(--text-muted)', fontWeight:600 }}>· {total} animes</span>}
       </div>
 
       {/* ══════════════════════════
@@ -400,7 +400,7 @@ const Statistics = () => {
             sub: calificados.length > 0 ? `${calificados.length} calificados` : 'Sin calificaciones aún',
           },
           {
-            icon:<TrendingUp size={22}/>, bg:'rgba(62,166,255,0.1)', color:'#3ea6ff',
+            icon:<TrendingUp size={22}/>, bg:'rgba(62,166,255,0.1)', color: 'var(--accent-color)',
             val: episodiosVistos, lbl:'Episodios vistos',
             sub: horas > 0 ? `${horas}h ${Math.round(minutos % 60)}min de contenido` : 'Empieza a ver animes',
           },
@@ -455,7 +455,7 @@ const Statistics = () => {
         <div className="sp">
           <div className="sp-title"><Film size={17} color="#3ea6ff"/> Distribución de biblioteca</div>
           {total === 0 ? (
-            <div style={{ textAlign:'center', padding:'30px 0', color:'#2a2a2a', fontSize:'0.86rem' }}>Agrega animes para ver la distribución.</div>
+            <div style={{ textAlign:'center', padding:'30px 0', color: 'var(--text-muted)', fontSize:'0.86rem' }}>Agrega animes para ver la distribución.</div>
           ) : (
             <>
               <div style={{ display:'flex', alignItems:'center', gap:'24px', marginBottom:'4px' }}>
@@ -476,7 +476,7 @@ const Statistics = () => {
                         {e.icon} {e.label}
                       </div>
                       <div style={{ display:'flex', gap:'8px', alignItems:'center', flexShrink:0, marginLeft:'8px' }}>
-                        <span style={{ fontSize:'0.7rem', color:'#333' }}>
+                        <span style={{ fontSize:'0.7rem', color: 'var(--text-muted)' }}>
                           {total > 0 ? `${((e.count/total)*100).toFixed(0)}%` : '0%'}
                         </span>
                         <span style={{ fontSize:'0.85rem', color:'#fff', fontWeight:900, minWidth:'16px', textAlign:'right' }}>{e.count}</span>
@@ -510,7 +510,7 @@ const Statistics = () => {
         <div className="sp">
           <div className="sp-title"><BarChart2 size={17} color="#F59E0B"/> Animes por estado</div>
           {total === 0 ? (
-            <div style={{ textAlign:'center', padding:'30px 0', color:'#2a2a2a', fontSize:'0.86rem' }}>Sin datos disponibles.</div>
+            <div style={{ textAlign:'center', padding:'30px 0', color: 'var(--text-muted)', fontSize:'0.86rem' }}>Sin datos disponibles.</div>
           ) : (
             estadosConf.map((e, i) => (
               <HBar key={e.key} label={e.label} count={e.count} max={maxEstado} color={e.color} icon={e.icon} delay={i*65} total={total}/>
@@ -562,7 +562,7 @@ const Statistics = () => {
         <div className="sp">
           <div className="sp-title"><Star size={17} color="#FBBF24"/> Distribución de calificaciones</div>
           {calificados.length === 0 ? (
-            <div style={{ textAlign:'center', padding:'30px 0', color:'#2a2a2a', fontSize:'0.86rem' }}>
+            <div style={{ textAlign:'center', padding:'30px 0', color: 'var(--text-muted)', fontSize:'0.86rem' }}>
               Califica animes en tu Top Personal para ver esto.
             </div>
           ) : (
@@ -616,7 +616,7 @@ const Statistics = () => {
           <div style={{ display:'flex', flexDirection:'column', gap:'12px' }}>
 
             <div className="rc">
-              <div className="rc-icon" style={{ background:'rgba(62,166,255,0.1)', color:'#3ea6ff' }}><Eye size={18}/></div>
+              <div className="rc-icon" style={{ background:'rgba(62,166,255,0.1)', color: 'var(--accent-color)' }}><Eye size={18}/></div>
               <div>
                 <div className="rc-val"><CountUp target={episodiosVistos}/></div>
                 <div className="rc-lbl">Episodios vistos</div>
@@ -672,7 +672,7 @@ const Statistics = () => {
               const m = podioMeta(anime.ranking);
               return (
                 <div key={anime.id}
-                  style={{ background:`linear-gradient(135deg,rgba(20,20,23,0.95),rgba(10,10,13,0.98))`, border:`1px solid ${m.color}30`, boxShadow:`0 5px 22px ${m.glow}`, borderRadius:'15px', padding:'14px', display:'flex', alignItems:'center', gap:'12px', position:'relative', overflow:'hidden', transition:'transform 0.2s ease', cursor:'default' }}
+                  style={{ background: 'var(--bg-card)', border:`1px solid ${m.color}30`, boxShadow:`0 5px 22px ${m.glow}`, borderRadius:'15px', padding:'14px', display:'flex', alignItems:'center', gap:'12px', position:'relative', overflow:'hidden', transition:'transform 0.2s ease', cursor:'default' }}
                   onMouseEnter={e=>e.currentTarget.style.transform='translateY(-3px)'}
                   onMouseLeave={e=>e.currentTarget.style.transform='none'}
                 >
@@ -685,7 +685,7 @@ const Statistics = () => {
                     <div style={{ display:'flex', alignItems:'center', gap:'4px', color:'#FBBF24', fontWeight:900, fontSize:'0.9rem' }}>
                       <Star size={12} fill="#FBBF24" color="#FBBF24"/>
                       {Number(anime.calificacion).toFixed(1)}
-                      <span style={{ color:'#303030', fontWeight:400, fontSize:'0.78rem' }}> / 10</span>
+                      <span style={{ color: 'var(--text-muted)', fontWeight:400, fontSize:'0.78rem' }}> / 10</span>
                     </div>
                   </div>
                   <div style={{ position:'absolute', right:'6px', bottom:'-10px', fontSize:'3rem', fontWeight:900, color:m.color, opacity:0.09, lineHeight:1, userSelect:'none' }}>

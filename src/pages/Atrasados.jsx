@@ -26,8 +26,8 @@ const Atrasados = () => {
         title: 'Error', 
         text: 'No se pudieron cargar tus animes atrasados.', 
         icon: 'error', 
-        background: '#1a1a1a', 
-        color: '#fff',
+        background: 'var(--bg-card-solid, #1a1a1a)', 
+        color: 'var(--text-main, #fff)',
         backdrop: 'rgba(0,0,0,0.8)',
         customClass: { popup: 'swal-error-popup' }
       });
@@ -56,8 +56,8 @@ const Atrasados = () => {
         title: '¡A ponerte al día!', 
         text: `"${titulo}" se movió a Viendo. ¡Disfruta la temporada!`, 
         icon: 'success', 
-        background: '#1a1a1a', 
-        color: '#fff', 
+        background: 'var(--bg-card-solid, #1a1a1a)', 
+        color: 'var(--text-main, #fff)', 
         timer: 2000, 
         showConfirmButton: false,
         backdrop: 'rgba(0,0,0,0.8)',
@@ -79,8 +79,8 @@ const Atrasados = () => {
       cancelButtonColor: '#3ea6ff',
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar',
-      background: '#1a1a1a',
-      color: '#ffffff',
+      background: 'var(--bg-card-solid, #1a1a1a)',
+      color: 'var(--text-main, #fff)',
       backdrop: 'rgba(0,0,0,0.8)',
       customClass: { popup: 'swal-delete-popup' }
     });
@@ -93,8 +93,8 @@ const Atrasados = () => {
         Swal.fire({ 
           title: '¡Eliminado!', 
           icon: 'success', 
-          background: '#1a1a1a', 
-          color: '#fff', 
+          background: 'var(--bg-card-solid, #1a1a1a)', 
+          color: 'var(--text-main, #fff)', 
           timer: 1500, 
           showConfirmButton: false,
           backdrop: 'rgba(0,0,0,0.8)',
@@ -179,34 +179,7 @@ const Atrasados = () => {
           color: var(--text-muted);
           text-align: center;
         }
-        .search-bar-container {
-          position: relative;
-          max-width: 350px;
-          margin-bottom: 25px;
-        }
-        .search-bar-input {
-          width: 100%;
-          padding: 10px 16px 10px 40px;
-          background-color: #1a1a1a;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 8px;
-          color: white;
-          font-size: 0.9rem;
-          outline: none;
-          transition: all 0.2s ease;
-        }
-        .search-bar-input:focus {
-          border-color: #8B5CF6; /* Focus morado */
-          box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
-        }
-        .search-bar-icon {
-          position: absolute;
-          left: 12px;
-          top: 50%;
-          transform: translateY(-50%);
-          color: rgba(255, 255, 255, 0.4);
-          pointer-events: none;
-        }
+        /* search-bar: estilos movidos a index.css */
       `}</style>
 
       <h2 className="title" style={{ color: '#3ea6ff', marginBottom: '20px', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '8px' }}><Hourglass size={22} />Temporadas Atrasadas</h2>
